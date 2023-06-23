@@ -10,7 +10,7 @@ use yii\grid\GridView;
 /** @var common\models\search\ProjectUserSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Project Users';
+$this->title = 'Usuarios del proyecto';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="project-user-index">
@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Project User', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crear Usuarios del Proyecto', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
