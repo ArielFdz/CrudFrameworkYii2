@@ -28,20 +28,21 @@ AppAsset::register($this);
 <header>
     <?php
     NavBar::begin([
-        'brandLabel' => Yii::$app->name,
+        // 'brandLabel' => Yii::$app->name,
+        'brandLabel' => 'Administración de Proyectos',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top',
         ],
     ]);
     $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
+        ['label' => 'Inicio', 'url' => ['/site/index']],
     ];
     //AQUI SE LOGUEA EL USUARIO EN EL BACKEND
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
     } else{
-        $menuItems[] = ['label'=> 'Configuracion', 'url' => ['/site/index'], 
+        $menuItems[] = ['label'=> 'Administración', 'url' => ['/site/index'], 
                         'options' => ['class'=>'dropdown'],
                         'template' => '<a href="{url}" class="href_class">{label}</a>',
                         'items' =>[ ['label' => 'Proyectos',  'url'=>['/project/index']],
@@ -50,11 +51,11 @@ AppAsset::register($this);
                                 ],
                         ];
 
-        $menuItems[] = ['label'=> 'Menú desplegable', 'url' => ['/site/index'], 
+        $menuItems[] = ['label'=> 'Configuración', 'url' => ['/site/index'], 
                         'options' => ['class'=>'dropdown'],
                         'template' => '<a href="{url}" class="href_class">{label}</a>',
-                        'items' =>[ ['label' => 'Opción 1',  'url'=>['/project/index']],
-                                    ['label' => 'Opción 2',  'url'=>['/project-user/index']],
+                        'items' =>[ ['label' => 'Roles',  'url'=>['/role/index']],
+                                    ['label' => 'Estatus',  'url'=>['/status/index']],
                                     ['label' => 'Opción 3',  'url'=>['/task/index']],
                                 ],
                         ];
@@ -68,7 +69,7 @@ AppAsset::register($this);
     } else {
         echo Html::beginForm(['/site/logout'], 'post', ['class' => 'd-flex'])
             . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
+                'Cerrar Sesión (' . Yii::$app->user->identity->username . ')',
                 ['class' => 'btn btn-link logout text-decoration-none']
             )
             . Html::endForm();
