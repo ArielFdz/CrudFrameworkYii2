@@ -5,6 +5,7 @@ use yii\widgets\DetailView;
 
 //SE AGREGAN LAS CLASES/MODELOS NECESARIOS PARA EL MAPEO DEL ESTATUS
 use common\models\Status;
+use common\models\Project;
 
 /** @var yii\web\View $this */
 /** @var common\models\Task $model */
@@ -35,7 +36,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'name',
             'description:ntext',
-            'project_id',
+            // 'project_id',
+            [
+                'attribute'=>'project_id',
+                'value'=>Project::findOne($model->project_id)->name
+            ],
             // 'status_id',
             [
                 'attribute'=>'status_id',

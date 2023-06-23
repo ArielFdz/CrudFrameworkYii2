@@ -87,7 +87,7 @@ class Task extends \yii\db\ActiveRecord
             'id' => 'ID',
             'name' => 'Nombre',
             'description' => 'Descripción',
-            'project_id' => 'ID del Proyecto',
+            'project_id' => 'Proyecto',
             'status_id' => 'Estatus',
             'created_at' => 'Creado en',
             'updated_at' => 'Actualizado en',

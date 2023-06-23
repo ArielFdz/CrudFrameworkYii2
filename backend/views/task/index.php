@@ -8,6 +8,7 @@ use yii\grid\GridView;
 
 //SE AGREGAN LAS CLASES/MODELOS NECESARIOS PARA EL MAPEO DEL ESTATUS
 use common\models\Status;
+use common\models\Project;
 use yii\helpers\ArrayHelper;
 
 /** @var yii\web\View $this */
@@ -36,7 +37,16 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'name',
             'description:ntext',
-            'project_id',
+            // 'project_id',
+            [
+                'attribute' => 'project_id', 
+                'value' => function($model)
+                            {
+                                $estado= Project::findOne($model->project_id); //select * from status where
+                                return $estado->description;
+                            },
+                'filter' => ArrayHelper::map(Status::find()->all(), 'id', 'name'),   
+            ],
             // 'status_id',
             [
                 'attribute' => 'status_id', 

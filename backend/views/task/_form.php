@@ -5,6 +5,7 @@ use yii\widgets\ActiveForm;
 
 //SE AGREGAN LAS CLASES/MODELOS NECESARIOS PARA EL MAPEO DEL ESTATUS
 use common\models\Status;
+use common\models\Project;
 use yii\helpers\ArrayHelper;
 
 /** @var yii\web\View $this */
@@ -20,7 +21,9 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'project_id')->textInput() ?>
+    <!-- <?= $form->field($model, 'project_id')->textInput() ?> -->
+
+    <?= $form->field($model, 'project_id')->dropDownList(ArrayHelper::map(Project:: find()->All(), 'id', 'name')) ?>
 
     <!-- <?= $form->field($model, 'status_id')->textInput() ?> -->
     
