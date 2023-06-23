@@ -6,11 +6,15 @@ use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 
+//SE AGREGAN LAS CLASES/MODELOS NECESARIOS PARA EL MAPEO DEL ESTATUS
+use common\models\Status;
+use yii\helpers\ArrayHelper;
+
 /** @var yii\web\View $this */
 /** @var common\models\search\TaskSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Tasks';
+$this->title = 'Tareas';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="task-index">
@@ -18,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Task', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crear Tarea', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -33,7 +37,16 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'description:ntext',
             'project_id',
-            'status_id',
+            // 'status_id',
+            [
+                'attribute' => 'status_id', 
+                'value' => function($model)
+                            {
+                                $estado= Status::findOne($model->status_id); //select * from status where
+                                return $estado->description;
+                            },
+                'filter' => ArrayHelper::map(Status::find()->all(), 'id', 'description'),   
+            ],
             //'created_at',
             //'updated_at',
             //'created_by',

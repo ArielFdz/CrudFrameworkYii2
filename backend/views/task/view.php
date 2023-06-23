@@ -3,6 +3,9 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
+//SE AGREGAN LAS CLASES/MODELOS NECESARIOS PARA EL MAPEO DEL ESTATUS
+use common\models\Status;
+
 /** @var yii\web\View $this */
 /** @var common\models\Task $model */
 
@@ -16,11 +19,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('Actualizar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Eliminar', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => '¿Realmente desea eliminar el registro?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -33,7 +36,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'description:ntext',
             'project_id',
-            'status_id',
+            // 'status_id',
+            [
+                'attribute'=>'status_id',
+                'value'=>Status::findOne($model->status_id)->description
+            ],
             'created_at',
             'updated_at',
             'created_by',
