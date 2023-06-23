@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /** @var yii\web\View $this */
 /** @var common\models\ProjectUser $model */
 
-$this->title = 'Crear Usuarios del Proyecto';
+$this->title = 'Crear Proyecto Asignado';
 $this->params['breadcrumbs'][] = ['label' => 'Project Users', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

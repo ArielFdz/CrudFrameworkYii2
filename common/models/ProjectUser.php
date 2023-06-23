@@ -46,9 +46,9 @@ class ProjectUser extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'project_id' => 'Project ID',
-            'user_id' => 'User ID',
-            'role_id' => 'Role ID',
+            'project_id' => 'Proyecto',
+            'user_id' => 'Usuario',
+            'role_id' => 'Rol',
         ];
     }
 
