@@ -10,7 +10,7 @@ use yii\grid\GridView;
 /** @var common\models\search\StatusSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Statuses';
+$this->title = 'Estatus';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="status-index">
@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Status', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crear Estatus', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
