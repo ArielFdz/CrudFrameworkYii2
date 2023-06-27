@@ -5,6 +5,7 @@ use yii\widgets\DetailView;
 
 //NUEVAS
 use common\models\Task;
+use common\models\Project;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
@@ -59,11 +60,19 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
             // 'id',
             'name',
             'description:ntext',
-            'project_id',
+            // 'project_id',
+            [
+                'attribute' => 'project_id', 
+                'value' => function($model)
+                            {
+                                $estado= Project::findOne($model->project_id); //select * from status where
+                                return $estado->description;
+                            },
+                // 'filter' => ArrayHelper::map(Status::find()->all(), 'id', 'name'),   
+            ],
             // 'status_id',
             [
                 'attribute' => 'status_id', 
@@ -72,7 +81,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 $estado= Status::findOne($model->status_id); //select * from status where
                                 return $estado->description;
                             },
-                'filter' => ArrayHelper::map(Status::find()->all(), 'id', 'description'),   
+                // 'filter' => ArrayHelper::map(Status::find()->all(), 'id', 'description'),   
             ],
             // 'created_at',
             // 'updated_at',
