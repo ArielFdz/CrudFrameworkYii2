@@ -15,16 +15,16 @@ use yii\helpers\ArrayHelper;
 /** @var common\models\search\ProjectUserSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Proyectos Asignados';
+$this->title = 'Asignar Proyectos';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="project-user-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Crear Proyecto Asignado', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <!-- <p>
+        <?= Html::a('Crear Asignación de Proyecto', ['create'], ['class' => 'btn btn-success']) ?>
+    </p> -->
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
@@ -65,13 +65,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 'filter' => ArrayHelper::map(Role::find()->all(), 'id', 'nombre'),   
             ],
             
-            //Por defecto
-            [
-                'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, ProjectUser $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'project_id' => $model->project_id, 'user_id' => $model->user_id]);
-                 }
-            ],
+            // //Por defecto
+            // [
+            //     'class' => ActionColumn::className(),
+            //     'urlCreator' => function ($action, ProjectUser $model, $key, $index, $column) {
+            //         return Url::toRoute([$action, 'project_id' => $model->project_id, 'user_id' => $model->user_id]);
+            //      }
+            // ],
         ],
     ]); ?>
 

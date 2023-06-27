@@ -66,13 +66,15 @@ class ProjectUserController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
-    public function actionCreate()
+    public function actionCreate($project_id)
     {
         $model = new ProjectUser();
+        $model -> project_id = $project_id;
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'project_id' => $model->project_id, 'user_id' => $model->user_id]);
+                // return $this->redirect(['view', 'project_id' => $model->project_id, 'user_id' => $model->user_id]);
+                return $this->redirect(['project/view', 'id' => $model->project_id,'class' => 'project']);
             }
         } else {
             $model->loadDefaultValues();

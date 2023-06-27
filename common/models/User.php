@@ -210,4 +210,14 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $this->password_reset_token = null;
     }
+
+    public function attributeLabels()
+    {
+        return [
+            'username' => 'Nombre de usuario',
+            'email' => 'Correo Electrónico',
+            'status' => 'Estado',
+            // Agrega aquí los nombres personalizados de las columnas que desees cambiar
+        ];
+    }
 }

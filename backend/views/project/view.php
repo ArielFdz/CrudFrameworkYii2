@@ -6,7 +6,9 @@ use yii\widgets\DetailView;
 //NUEVAS
 use common\models\Task;
 use common\models\Project;
+use common\models\ProjectUser;
 use common\models\User;
+use common\models\Role;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
@@ -106,4 +108,61 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 
+    <p>
+        <!-- <?= Html::a('Crear Asignación de Proyecto', ['create'], ['class' => 'btn btn-success']) ?> -->
+        <?= Html::a('Asignar Proyecto',['project-user/create', 'project_id' => $model->id], ['class' => 'btn btn-success btn-small']) ?>
+    
+    </p>
+
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
+    <?= GridView::widget([
+        'dataProvider' => $dataProviderEjemplo,
+        'filterModel' => $searchModel2,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+
+            // 'project_id',
+            [
+                'attribute' => 'project_id', 
+                'value' => function($model)
+                            {
+                                $estado= Project::findOne($model->project_id); //select * from status where
+                                return $estado->description;
+                            },
+                'filter' => ArrayHelper::map(Project::find()->all(), 'id', 'name'),   
+            ],
+            // 'user_id',
+            [
+                'attribute' => 'user_id', 
+                'value' => function($model)
+                            {
+                                $nombreRol= User::findOne($model->user_id); //select * from role where
+                                return $nombreRol->username;
+                            },
+                'filter' => ArrayHelper::map(User::find()->all(), 'id', 'username'),   
+            ],
+            // 'role_id',
+            [
+                'attribute' => 'role_id', 
+                'value' => function($model)
+                            {
+                                $nombreRol= Role::findOne($model->role_id); //select * from role where
+                                return $nombreRol->nombre;
+                            },
+                'filter' => ArrayHelper::map(Role::find()->all(), 'id', 'nombre'),   
+            ],
+            
+            // //Por defecto
+            // [
+            //     'class' => ActionColumn::className(),
+            //     'urlCreator' => function ($action, ProjectUser $model, $key, $index, $column) {
+            //         return Url::toRoute([$action, 'project_id' => $model->project_id, 'user_id' => $model->user_id]);
+            //      }
+            // ],
+            ['class' => 'yii\grid\ActionColumn','controller' => 'project-user','template' => '{view} {update} {delete}'],
+        ],
+    ]); ?>
+
+    
 </div>

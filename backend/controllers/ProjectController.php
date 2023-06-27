@@ -10,6 +10,7 @@ use yii\filters\VerbFilter;
 
 //Se importa esta libreria
 use common\models\search\TaskSearch;
+use common\models\search\ProjectUserSearch;
 
 /**
  * ProjectController implements the CRUD actions for Project model.
@@ -60,10 +61,14 @@ class ProjectController extends Controller
     {
         $searchModel = new TaskSearch();
         $dataProvider = $searchModel->search($this->request->queryParams, $id);
+        $searchModel2 = new ProjectUserSearch();
+        $dataProviderEjemplo = $searchModel2->search($this->request->queryParams, $id);
         return $this->render('view', [
             'model' => $this->findModel($id),
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'searchModel2' => $searchModel2,
+            'dataProviderEjemplo' => $dataProviderEjemplo,
         ]);
     }
 
