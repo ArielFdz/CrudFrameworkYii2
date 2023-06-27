@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 $estado= Project::findOne($model->project_id); //select * from status where
                                 return $estado->description;
                             },
-                'filter' => ArrayHelper::map(Status::find()->all(), 'id', 'name'),   
+                'filter' => ArrayHelper::map(Project::find()->all(), 'id', 'name'),   
             ],
             // 'status_id',
             [

@@ -6,6 +6,7 @@ use yii\widgets\DetailView;
 //NUEVAS
 use common\models\Task;
 use common\models\Project;
+use common\models\User;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
@@ -43,8 +44,16 @@ $this->params['breadcrumbs'][] = $this->title;
             'description:ntext',
             'created_at',
             'updated_at',
-            'created_by',
-            'updated_by',
+            // 'created_by',
+            // 'updated_by',
+            [
+                'attribute'=>'created_by',
+                'value'=>User::findOne($model->created_by)->username
+            ],
+            [
+                'attribute'=>'updated_by',
+                'value'=>User::findOne($model->updated_by)->username
+            ],
         ],
     ]) ?>
 

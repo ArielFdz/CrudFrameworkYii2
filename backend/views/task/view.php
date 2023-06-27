@@ -6,6 +6,7 @@ use yii\widgets\DetailView;
 //SE AGREGAN LAS CLASES/MODELOS NECESARIOS PARA EL MAPEO DEL ESTATUS
 use common\models\Status;
 use common\models\Project;
+use common\models\User;
 
 /** @var yii\web\View $this */
 /** @var common\models\Task $model */
@@ -48,8 +49,16 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'created_at',
             'updated_at',
-            'created_by',
-            'updated_by',
+            // 'created_by',
+            // 'updated_by',
+            [
+                'attribute'=>'created_by',
+                'value'=>User::findOne($model->created_by)->username
+            ],
+            [
+                'attribute'=>'updated_by',
+                'value'=>User::findOne($model->updated_by)->username
+            ],
         ],
     ]) ?>
 
