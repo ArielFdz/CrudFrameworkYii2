@@ -2,6 +2,9 @@
 
 /** @var yii\web\View $this */
 
+//SE UTILIZA LA LIBRERIA PARA LAS IMAGENES
+use yii\helpers\Url;
+
 $this->title = 'Sistema de Administración de Proyectos';
 ?>
 <div class="site-index">
@@ -9,12 +12,12 @@ $this->title = 'Sistema de Administración de Proyectos';
     <div class="jumbotron text-center bg-transparent">
         <h1 class="display-4">Sistema de Administración de Proyectos</h1>
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p><a class="btn btn-lg btn-success" href="https://www.yiiframework.com">Get started with Yii</a></p>
+        <p class="lead">Aplicación realizada para la administración de proyectos usando el framework Yii2</p>
+        <IMG src=  <?php echo Url::to(Yii::$app->params['urlLogotipo'],true); ?> width="20%" height="15%"  BORDER=0 ALT="Imagen de Enzabezado" ALIGN="center"/>
+        <!-- <p><a class="btn btn-lg btn-success" href="https://www.yiiframework.com">Get started with Yii</a></p> -->
     </div>
 
-    <div class="body-content">
+    <!-- <div class="body-content">
 
         <div class="row">
             <div class="col-lg-4">
@@ -49,5 +52,5 @@ $this->title = 'Sistema de Administración de Proyectos';
             </div>
         </div>
 
-    </div>
+    </div> -->
 </div>

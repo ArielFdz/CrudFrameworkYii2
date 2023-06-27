@@ -3,6 +3,14 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
+//NUEVAS
+use common\models\Task;
+use yii\helpers\Url;
+use yii\grid\ActionColumn;
+use yii\grid\GridView;
+use common\models\Status;
+use yii\helpers\ArrayHelper;
+
 /** @var yii\web\View $this */
 /** @var common\models\Project $model */
 
@@ -38,5 +46,46 @@ $this->params['breadcrumbs'][] = $this->title;
             'updated_by',
         ],
     ]) ?>
+
+    <p>
+        <!-- <?= Html::a('Crear Tarea', ['create'], ['class' => 'btn btn-success']) ?> -->
+        <?= Html::a('Crear tareas',['task/create', 'project_id' => $model->id], ['class' => 'btn btn-success btn-small']) ?>
+    </p>
+
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+
+            // 'id',
+            'name',
+            'description:ntext',
+            'project_id',
+            // 'status_id',
+            [
+                'attribute' => 'status_id', 
+                'value' => function($model)
+                            {
+                                $estado= Status::findOne($model->status_id); //select * from status where
+                                return $estado->description;
+                            },
+                'filter' => ArrayHelper::map(Status::find()->all(), 'id', 'description'),   
+            ],
+            // 'created_at',
+            // 'updated_at',
+            // 'created_by',
+            // 'updated_by',
+            // [
+            //     'class' => ActionColumn::className(),
+            //     'urlCreator' => function ($action, Task $model, $key, $index, $column) {
+            //         return Url::toRoute([$action, 'id' => $model->id]);
+            //      }
+            // ],
+            ['class' => 'yii\grid\ActionColumn','controller' => 'task','template' => '{view} {update} {delete}'],
+        ],
+    ]); ?>
 
 </div>

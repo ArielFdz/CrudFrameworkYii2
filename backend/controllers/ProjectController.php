@@ -8,6 +8,9 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
+//Se importa esta libreria
+use common\models\search\TaskSearch;
+
 /**
  * ProjectController implements the CRUD actions for Project model.
  */
@@ -55,8 +58,12 @@ class ProjectController extends Controller
      */
     public function actionView($id)
     {
+        $searchModel = new TaskSearch();
+        $dataProvider = $searchModel->search($this->request->queryParams, $id);
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
         ]);
     }
 

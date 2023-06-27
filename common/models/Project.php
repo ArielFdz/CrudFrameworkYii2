@@ -116,4 +116,10 @@ class Project extends \yii\db\ActiveRecord
     {
         return $this->hasMany(User::class, ['id' => 'user_id'])->viaTable('project_user', ['project_id' => 'id']);
     }
+
+    public function getUserName($id) 
+    { 
+        $user = User::findIdentity($id); 
+        return $user->username; 
+    }
 }
