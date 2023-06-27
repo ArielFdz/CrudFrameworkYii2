@@ -3,6 +3,11 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
+//SE AGREGAN LAS CLASES/MODELOS NECESARIOS PARA EL MAPEO DEL ESTATUS
+use common\models\User;
+use common\models\Project;
+use common\models\Role;
+
 /** @var yii\web\View $this */
 /** @var common\models\ProjectUser $model */
 
@@ -29,9 +34,21 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'project_id',
-            'user_id',
-            'role_id',
+            // 'project_id',
+            [
+                'attribute'=>'project_id',
+                'value'=>Project::findOne($model->project_id)->name
+            ],
+            // 'user_id',
+            [
+                'attribute'=>'user_id',
+                'value'=>User::findOne($model->user_id)->username
+            ],
+            // 'role_id',
+            [
+                'attribute'=>'role_id',
+                'value'=>Role::findOne($model->role_id)->nombre
+            ],
         ],
     ]) ?>
 

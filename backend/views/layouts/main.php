@@ -46,17 +46,17 @@ AppAsset::register($this);
                         'options' => ['class'=>'dropdown'],
                         'template' => '<a href="{url}" class="href_class">{label}</a>',
                         'items' =>[ ['label' => 'Proyectos',  'url'=>['/project/index']],
-                                    ['label' => 'Proyectos Asignados',  'url'=>['/project-user/index']],
-                                    ['label' => 'Tareas',  'url'=>['/task/index']],
+                                    ['label' => 'Estatus',  'url'=>['/status/index']],
+                                    ['label' => 'Roles',  'url'=>['/role/index']],
                                 ],
                         ];
 
-        $menuItems[] = ['label'=> 'Configuración', 'url' => ['/site/index'], 
+        $menuItems[] = ['label'=> 'Datos', 'url' => ['/site/index'], 
                         'options' => ['class'=>'dropdown'],
                         'template' => '<a href="{url}" class="href_class">{label}</a>',
-                        'items' =>[ ['label' => 'Roles',  'url'=>['/role/index']],
-                                    ['label' => 'Estatus',  'url'=>['/status/index']],
-                                    ['label' => 'Opción 3',  'url'=>['/task/index']],
+                        'items' =>[ ['label' => 'Tareas Asignadas',  'url'=>['/task/index']],
+                                    ['label' => 'Proyectos Asignados',  'url'=>['/project-user/index']],
+                                    ['label' => 'Usuarios Existentes',  'url'=>['/user/index']],
                                 ],
                         ];
     }   

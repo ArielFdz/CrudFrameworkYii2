@@ -15,7 +15,7 @@ use yii\helpers\ArrayHelper;
 /** @var common\models\search\TaskSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Tareas';
+$this->title = 'Tareas Asignadas';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="task-index">
@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 $estado= Project::findOne($model->project_id); //select * from status where
                                 return $estado->description;
                             },
-                'filter' => ArrayHelper::map(Project::find()->all(), 'id', 'name'),   
+                // 'filter' => ArrayHelper::map(Project::find()->all(), 'id', 'name'),   
             ],
             // 'status_id',
             [
@@ -55,7 +55,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 $estado= Status::findOne($model->status_id); //select * from status where
                                 return $estado->description;
                             },
-                'filter' => ArrayHelper::map(Status::find()->all(), 'id', 'description'),   
+                // 'filter' => ArrayHelper::map(Status::find()->all(), 'id', 'description'),   
             ],
             //'created_at',
             //'updated_at',
