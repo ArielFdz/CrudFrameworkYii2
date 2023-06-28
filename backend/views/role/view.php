@@ -2,11 +2,12 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use common\models\Role;
 
 /** @var yii\web\View $this */
 /** @var common\models\Role $model */
 
-$this->title = $model->id;
+$this->title = Role::findOne($model->id)->nombre;
 $this->params['breadcrumbs'][] = ['label' => 'Roles', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);

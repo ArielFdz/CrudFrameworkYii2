@@ -3,10 +3,12 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
+use common\models\Status;
+
 /** @var yii\web\View $this */
 /** @var common\models\Status $model */
 
-$this->title = $model->id;
+$this->title = Status::findOne($model->id)->description;
 $this->params['breadcrumbs'][] = ['label' => 'Statuses', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);

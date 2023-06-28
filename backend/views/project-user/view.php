@@ -11,7 +11,7 @@ use common\models\Role;
 /** @var yii\web\View $this */
 /** @var common\models\ProjectUser $model */
 
-$this->title = $model->project_id;
+$this->title = Project::findOne($model->project_id)->name;
 $this->params['breadcrumbs'][] = ['label' => 'Project Users', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
